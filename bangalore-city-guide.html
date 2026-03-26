@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namma Bangalore — City Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B35;
+  --gold: #F7C948;
+  --deep: #1A1A2E;
+  --ink: #16213E;
+  --teal: #0F3460;
+  --mint: #4ECDC4;
+  --cream: #FFF8F0;
+  --silk: #FAF3E8;
+  --text: #2C2C3E;
+  --muted: #7A7A9A;
+  --card: #FFFFFF;
+  --border: rgba(255,107,53,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--silk);color:var(--text);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,46,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,107,53,0.2)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);letter-spacing:-0.5px}
+.logo span{color:var(--saffron)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;font-weight:500;padding:6px 14px;border-radius:20px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--saffron);color:#fff}
+.nav-cta{background:var(--gold);color:var(--deep)!important;font-weight:600!important;border-radius:20px!important}
+.nav-cta:hover{background:#e6b93e!important;color:var(--deep)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;transition:0.3s}
+
+/* ── HERO ── */
+#hero{min-height:100vh;background:linear-gradient(135deg,var(--deep) 0%,var(--teal) 50%,#0D1B2A 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px}
+.hero-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 80%,rgba(255,107,53,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(247,201,72,0.1) 0%,transparent 50%),url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-tag{display:inline-block;background:rgba(255,107,53,0.2);border:1px solid rgba(255,107,53,0.4);color:var(--saffron);font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;color:#fff;margin-bottom:10px}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--saffron);color:#fff;padding:14px 28px;border-radius:50px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#e85a22;transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,107,53,0.4)}
+.btn-secondary{background:transparent;color:#fff;padding:14px 28px;border-radius:50px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s;border:2px solid rgba(255,255,255,0.3);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+.hero-stats{display:flex;gap:32px;margin-top:40px}
+.stat{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:2px}
+.hero-visual{position:relative}
+.hero-card-stack{position:relative;height:420px}
+.hcard{position:absolute;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.hcard-main{width:300px;height:380px;top:0;right:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 40%,rgba(0,0,0,0.85) 100%),url('https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80') center/cover;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.hcard-main h3{color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem}
+.hcard-main p{color:rgba(255,255,255,0.7);font-size:0.85rem;margin-top:4px}
+.hcard-sm{width:180px;height:160px;bottom:30px;left:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 20%,rgba(0,0,0,0.8) 100%),url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&q=80') center/cover;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.hcard-sm h4{color:#fff;font-size:0.9rem;font-weight:600}
+.hcard-badge{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--deep);font-size:0.75rem;font-weight:700;padding:6px 12px;border-radius:20px}
+
+/* ── AI SEARCH ── */
+#ai-search{background:var(--deep);padding:60px 24px;position:relative;overflow:hidden}
+#ai-search::before{content:'';position:absolute;top:-50%;left:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,53,0.2),transparent 70%);pointer-events:none}
+.search-container{max-width:800px;margin:0 auto;text-align:center}
+.search-container h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:8px}
+.search-container p{color:rgba(255,255,255,0.55);margin-bottom:28px}
+.ai-input-wrap{position:relative;max-width:640px;margin:0 auto}
+.ai-input{width:100%;padding:18px 160px 18px 24px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,107,53,0.3);border-radius:50px;color:#fff;font-size:1rem;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.3s}
+.ai-input::placeholder{color:rgba(255,255,255,0.35)}
+.ai-input:focus{border-color:var(--saffron)}
+.ai-btn{position:absolute;right:6px;top:6px;background:var(--saffron);color:#fff;border:none;border-radius:50px;padding:12px 24px;font-weight:600;font-size:0.9rem;cursor:pointer;transition:background 0.3s;font-family:'DM Sans',sans-serif}
+.ai-btn:hover{background:#e85a22}
+.ai-result{max-width:640px;margin:20px auto 0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;text-align:left;color:rgba(255,255,255,0.85);font-size:0.95rem;line-height:1.7;display:none}
+.ai-result.show{display:block;animation:fadeIn 0.4s ease}
+.ai-thinking{color:var(--gold);font-style:italic}
+.quick-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.chip{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:8px 16px;border-radius:20px;font-size:0.82rem;cursor:pointer;transition:all 0.2s}
+.chip:hover{background:rgba(255,107,53,0.2);border-color:var(--saffron);color:#fff}
+
+/* ── SECTION SHARED ── */
+section{padding:80px 24px}
+.section-inner{max-width:1300px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--saffron);margin-bottom:10px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--deep);line-height:1.2}
+.section-sub{color:var(--muted);margin-top:10px;font-size:1rem}
+
+/* ── PLACES ── */
+#places{background:var(--silk)}
+.places-filter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.filter-btn{background:#fff;border:2px solid var(--border);color:var(--muted);padding:8px 20px;border-radius:20px;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.filter-btn.active,.filter-btn:hover{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.places-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.place-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;cursor:pointer}
+.place-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.12)}
+.place-img{height:200px;object-fit:cover;width:100%;display:block}
+.place-img-placeholder{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#f8f0e8,#fde8d8)}
+.place-body{padding:20px}
+.place-cat{font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--saffron);margin-bottom:6px}
+.place-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--deep);margin-bottom:6px}
+.place-desc{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.place-meta{display:flex;align-items:center;gap:12px;font-size:0.82rem;color:var(--muted)}
+.stars{color:var(--gold)}
+.place-tag-pill{background:var(--silk);color:var(--saffron);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:10px}
+
+/* ── FOOD ── */
+#food{background:#fff}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.food-card{border-radius:20px;overflow:hidden;background:var(--silk);transition:all 0.3s;cursor:pointer}
+.food-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.1)}
+.food-img{height:180px;object-fit:cover;width:100%;display:block}
+.food-img-placeholder{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,#fff8f0,#ffe8d4)}
+.food-body{padding:18px}
+.food-type{font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mint);margin-bottom:4px}
+.food-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--deep);margin-bottom:6px}
+.food-desc{font-size:0.85rem;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.food-footer{display:flex;justify-content:space-between;align-items:center}
+.price-range{font-weight:600;color:var(--teal);font-size:0.85rem}
+.rating-badge{background:var(--deep);color:var(--gold);font-size:0.8rem;font-weight:700;padding:4px 10px;border-radius:10px}
+
+/* ── TRANSPORT ── */
+#transport{background:linear-gradient(135deg,var(--deep),var(--teal))}
+.transport-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.transport-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;transition:all 0.3s}
+.transport-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px)}
+.t-icon{font-size:2.5rem;margin-bottom:16px}
+.t-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:8px}
+.t-desc{font-size:0.875rem;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:16px}
+.t-tips{list-style:none}
+.t-tips li{font-size:0.82rem;color:rgba(255,255,255,0.7);padding:4px 0;padding-left:16px;position:relative}
+.t-tips li::before{content:'→';position:absolute;left:0;color:var(--saffron)}
+#transport .section-title{color:#fff}
+
+/* ── AREAS ── */
+#areas{background:var(--silk)}
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.area-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s}
+.area-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+.area-header{height:140px;display:flex;align-items:flex-end;padding:20px;position:relative;overflow:hidden}
+.area-bg{position:absolute;inset:0;opacity:0.85}
+.area-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.area-body{padding:20px}
+.area-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pill{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:12px;background:var(--silk);color:var(--text)}
+.area-info{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info-item label{font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600}
+.info-item span{display:block;font-size:0.9rem;font-weight:600;color:var(--deep);margin-top:2px}
+.safety-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle}
+
+/* ── EVENTS ── */
+#events{background:#fff}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.event-card{background:var(--silk);border-radius:20px;padding:24px;transition:all 0.3s;border-left:4px solid var(--saffron)}
+.event-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+.event-date{font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--saffron);margin-bottom:8px}
+.event-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--deep);margin-bottom:8px}
+.event-desc{font-size:0.87rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.event-meta{display:flex;gap:12px;font-size:0.8rem;color:var(--muted)}
+.event-badge{font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:10px;margin-left:auto}
+.badge-tech{background:#E8F4FD;color:#1A73E8}
+.badge-food{background:#FEF3E2;color:#E65100}
+.badge-culture{background:#F3E5F5;color:#7B1FA2}
+.badge-night{background:#1A1A2E;color:var(--gold)}
+.badge-sport{background:#E8F5E9;color:#2E7D32}
+
+/* ── MAP SECTION ── */
+#map-section{background:var(--deep);padding:60px 24px}
+.map-wrap{max-width:1100px;margin:0 auto}
+.map-frame{border-radius:20px;overflow:hidden;height:480px;border:2px solid rgba(255,107,53,0.3)}
+.map-frame iframe{width:100%;height:100%;border:none;display:block}
+#map-section .section-title{color:#fff}
+
+/* ── GROWTH ── */
+#growth{background:linear-gradient(135deg,#fff8f0,var(--silk));padding:80px 24px}
+.growth-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.growth-card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+.growth-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--saffron);font-weight:700;margin-bottom:4px}
+.growth-title{font-size:1rem;font-weight:600;color:var(--deep);margin-bottom:10px}
+.growth-steps{list-style:none}
+.growth-steps li{font-size:0.875rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px}
+.growth-steps li:last-child{border:none}
+.step-num{min-width:20px;height:20px;background:var(--saffron);color:#fff;border-radius:50%;font-size:0.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+/* ── LOGIN / REVIEWS ── */
+#community{background:var(--deep);padding:80px 24px}
+.community-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.login-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:36px}
+.login-box h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin-bottom:6px}
+.login-box p{color:rgba(255,255,255,0.5);font-size:0.875rem;margin-bottom:24px}
+.form-field{margin-bottom:14px}
+.form-field input,.form-field textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;color:#fff;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.3s}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--saffron)}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-field textarea{resize:vertical;min-height:80px}
+.btn-login{width:100%;background:var(--saffron);color:#fff;border:none;border-radius:12px;padding:14px;font-size:1rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.3s;margin-top:4px}
+.btn-login:hover{background:#e85a22}
+.reviews-side h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin-bottom:20px}
+.review-item{background:rgba(255,255,255,0.05);border-radius:16px;padding:18px;margin-bottom:14px}
+.reviewer{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--saffron);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:0.9rem}
+.rev-name{color:#fff;font-weight:600;font-size:0.9rem}
+.rev-stars{color:var(--gold);font-size:0.8rem}
+.rev-text{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6}
+
+/* ── FOOTER ── */
+footer{background:#0D1117;color:rgba(255,255,255,0.5);padding:48px 24px 24px}
+.footer-inner{max-width:1300px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo{margin-bottom:12px;display:block}
+.footer-brand p{font-size:0.875rem;line-height:1.7}
+.footer-col h4{color:#fff;font-weight:600;margin-bottom:14px;font-size:0.9rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--saffron)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem}
+.ad-banner{background:linear-gradient(135deg,rgba(255,107,53,0.1),rgba(247,201,72,0.1));border:1px solid rgba(255,107,53,0.2);border-radius:12px;padding:12px 20px;text-align:center;color:rgba(255,255,255,0.5);font-size:0.78rem;margin-top:20px}
+.ad-banner strong{color:var(--gold)}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:24px;max-width:560px;width:100%;max-height:80vh;overflow-y:auto;padding:32px;position:relative;animation:slideUp 0.3s ease}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1}
+.modal-close:hover{color:var(--deep)}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--deep);margin-bottom:8px}
+.modal .meta{display:flex;gap:16px;font-size:0.85rem;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+.modal .desc{font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:20px}
+.modal-img{width:100%;height:220px;object-fit:cover;border-radius:16px;margin-bottom:20px}
+.modal-img-placeholder{width:100%;height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,#f8f0e8,#fde8d8);border-radius:16px;margin-bottom:20px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--silk);border-radius:12px;padding:16px}
+.info-row label{font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600}
+.info-row span{display:block;font-size:0.9rem;font-weight:600;color:var(--deep);margin-top:2px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--deep);color:#fff;padding:14px 22px;border-radius:14px;font-size:0.9rem;z-index:3000;transform:translateY(100px);opacity:0;transition:all 0.4s;box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast .t-icon2{color:var(--gold);margin-right:8px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:var(--saffron);border-radius:3px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .community-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(26,26,46,0.98);padding:20px;gap:4px}
+  .hamburger{display:flex}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">Namma <span>Bangalore</span></a>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#places" class="active">Places</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#transport">Transport</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#community" class="nav-cta">Join Free</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag">🏙️ Silicon Valley of India</div>
+      <h1 class="hero-title">Discover <em>Namma</em><br>Bangalore</h1>
+      <p class="hero-sub">Your complete guide to the Garden City — from hidden cafés and tech hubs to heritage parks, local food, and everything in between.</p>
+      <div class="hero-btns">
+        <a href="#places" class="btn-primary">🗺️ Explore Places</a>
+        <a href="#ai-search" class="btn-secondary">🤖 Ask AI</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Places Listed</div></div>
+        <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Restaurants</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-label">Area Guides</div></div>
+        <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">AI Help</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hcard hcard-main">
+          <h3>Lalbagh Botanical Garden</h3>
+          <p>240 acres of living heritage 🌿</p>
+        </div>
+        <div class="hcard hcard-sm">
+          <h4>Cubbon Park</h4>
+        </div>
+        <div class="hcard-badge">⭐ Top Rated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SEARCH -->
+<section id="ai-search">
+  <div class="search-container">
+    <h2>🤖 Ask About Bangalore</h2>
+    <p>Ask anything — best biryani spots, metro routes, weekend trips, hidden gems...</p>
+    <div class="ai-input-wrap">
+      <input type="text" class="ai-input" id="aiQuery" placeholder="e.g. Best filter coffee near Indiranagar..." onkeydown="if(event.key==='Enter')askAI()">
+      <button class="ai-btn" onclick="askAI()">Ask AI</button>
+    </div>
+    <div class="ai-result" id="aiResult"></div>
+    <div class="quick-chips">
+      <div class="chip" onclick="setQuery('Best parks in Bangalore')">🌳 Best parks</div>
+      <div class="chip" onclick="setQuery('How to use Namma Metro')">🚇 Namma Metro</div>
+      <div class="chip" onclick="setQuery('Top restaurants in Koramangala')">🍛 Koramangala food</div>
+      <div class="chip" onclick="setQuery('Weekend getaways from Bangalore')">🏔️ Weekend trips</div>
+      <div class="chip" onclick="setQuery('Best cafes for work in Bangalore')">☕ Work cafes</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLACES -->
+<section id="places">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🗺️ Explore</div>
+      <h2 class="section-title">Places to Visit</h2>
+      <p class="section-sub">From lush parks to historic palaces — Bangalore has it all</p>
+    </div>
+    <div class="places-filter fade-in">
+      <button class="filter-btn active" onclick="filterPlaces('all',this)">All</button>
+      <button class="filter-btn" onclick="filterPlaces('park',this)">🌳 Parks</button>
+      <button class="filter-btn" onclick="filterPlaces('lake',this)">💧 Lakes</button>
+      <button class="filter-btn" onclick="filterPlaces('mall',this)">🛍️ Malls</button>
+      <button class="filter-btn" onclick="filterPlaces('heritage',this)">🏛️ Heritage</button>
+      <button class="filter-btn" onclick="filterPlaces('museum',this)">🎨 Museums</button>
+    </div>
+    <div class="places-grid" id="placesGrid"></div>
+  </div>
+</section>
+
+<!-- FOOD -->
+<section id="food">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🍜 Eat</div>
+      <h2 class="section-title">Food & Restaurants</h2>
+      <p class="section-sub">Udupi classics, biryani joints, rooftop bars — taste the city</p>
+    </div>
+    <div class="food-grid" id="foodGrid"></div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section id="transport">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🚌 Navigate</div>
+      <h2 class="section-title" style="color:#fff">Getting Around Bangalore</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5)">Everything you need to move around the city with ease</p>
+    </div>
+    <div class="transport-grid" id="transportGrid"></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🏙️ Localities</div>
+      <h2 class="section-title">Area Guides</h2>
+      <p class="section-sub">Find your perfect neighbourhood in Bangalore</p>
+    </div>
+    <div class="areas-grid" id="areasGrid"></div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🎉 Happening Now</div>
+      <h2 class="section-title">Events & Activities</h2>
+      <p class="section-sub">Festivals, tech meetups, nightlife & weekend fun</p>
+    </div>
+    <div class="events-grid" id="eventsGrid"></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <div class="map-wrap">
+    <div class="section-header fade-in">
+      <div class="section-tag" style="color:var(--gold)">🗺️ Navigate</div>
+      <h2 class="section-title">Bangalore on the Map</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5)">Explore the city visually</p>
+    </div>
+    <div class="map-frame fade-in">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.84916452506!2d77.49085415!3d12.9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH PLAN -->
+<section id="growth">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">🚀 Growth Blueprint</div>
+      <h2 class="section-title">Plan to Get 1,000 Visitors</h2>
+      <p class="section-sub">Proven strategies to grow Namma Bangalore's audience</p>
+    </div>
+    <div class="growth-grid" id="growthGrid"></div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="section-inner" style="max-width:1100px">
+    <div class="section-header fade-in">
+      <div class="section-tag" style="color:var(--gold)">👥 Community</div>
+      <h2 class="section-title" style="color:#fff">Join & Share Reviews</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.45)">Be part of Bangalore's growing city community</p>
+    </div>
+    <div class="community-inner">
+      <div class="login-box">
+        <h3>Create Your Account</h3>
+        <p>Join free — write reviews, save places, get local tips</p>
+        <div class="form-field"><input type="text" id="userName" placeholder="Your name"></div>
+        <div class="form-field"><input type="email" id="userEmail" placeholder="Email address"></div>
+        <div class="form-field"><input type="password" id="userPass" placeholder="Password"></div>
+        <div class="form-field">
+          <textarea id="reviewText" placeholder="Write a review about a place in Bangalore..."></textarea>
+        </div>
+        <button class="btn-login" onclick="submitReview()">Join & Submit Review</button>
+      </div>
+      <div class="reviews-side">
+        <h3>Latest Reviews</h3>
+        <div id="reviewsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADS FOOTER -->
+<div style="background:#111;padding:20px 24px;">
+  <div style="max-width:1300px;margin:0 auto">
+    <div class="ad-banner">
+      📢 <strong>Advertise Your Business</strong> — Reach 10,000+ Bangaloreans. <a href="#" style="color:var(--saffron);text-decoration:none;font-weight:600">Get Listed →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Namma <span>Bangalore</span></span>
+        <p>The most comprehensive guide to Bengaluru — places, food, events, and everything in between. Made with ❤️ for Bangaloreans.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#places">Places to Visit</a></li>
+          <li><a href="#food">Restaurants</a></li>
+          <li><a href="#transport">Transport</a></li>
+          <li><a href="#areas">Area Guides</a></li>
+          <li><a href="#events">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#community">Write a Review</a></li>
+          <li><a href="#">Submit a Place</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Partner with Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Popular Areas</h4>
+        <ul>
+          <li><a href="#">Indiranagar</a></li>
+          <li><a href="#">Koramangala</a></li>
+          <li><a href="#">Whitefield</a></li>
+          <li><a href="#">Jayanagar</a></li>
+          <li><a href="#">Electronic City</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Namma Bangalore City Guide. All rights reserved.</span>
+      <span>Made in 🏙️ Bengaluru</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──
+const places = [
+  {id:1,cat:'park',name:'Lalbagh Botanical Garden',desc:'A 240-acre botanical garden with rare plant species, a stunning glass house, and a beautiful lake at its heart.',emoji:'🌸',rating:4.8,visits:'2M+/year',entry:'₹20',timing:'6AM–7PM',area:'Jayanagar',tags:['Family Friendly','Photography','Heritage']},
+  {id:2,cat:'park',name:'Cubbon Park',desc:'The green lungs of Bangalore — 300 acres of lawns, trees and heritage buildings in the heart of the city.',emoji:'🌳',rating:4.7,visits:'1.5M+/year',entry:'Free',timing:'6AM–6PM',area:'MG Road',tags:['Free','Jogging','Heritage']},
+  {id:3,cat:'heritage',name:'Bangalore Palace',desc:'A Tudor-style palace inspired by Windsor Castle, with stunning wood carvings and royal portraits.',emoji:'🏰',rating:4.5,visits:'500K+/year',entry:'₹230',timing:'10AM–5:30PM',area:'Vasantnagar',tags:['Heritage','Architecture','Royal']},
+  {id:4,cat:'lake',name:'Ulsoor Lake',desc:'One of Bangalore\'s largest urban lakes, perfect for early morning walks and boating.',emoji:'🚣',rating:4.3,visits:'200K+/year',entry:'Free',timing:'5AM–8PM',area:'Ulsoor',tags:['Boating','Sunrise','Nature']},
+  {id:5,cat:'mall',name:'UB City Mall',desc:'Bangalore\'s most luxurious mall with premium brands, fine dining, and rooftop bar Skyye.',emoji:'🛍️',rating:4.6,visits:'5M+/year',entry:'Free',timing:'11AM–11PM',area:'Vittal Mallya Rd',tags:['Luxury','Dining','Shopping']},
+  {id:6,cat:'museum',name:'Visvesvaraya Industrial Museum',desc:'India\'s first industrial museum named after Sir M. Visvesvaraya — great for science enthusiasts.',emoji:'🔭',rating:4.4,visits:'300K+/year',entry:'₹60',timing:'10AM–6PM',area:'Kasturba Road',tags:['Education','Kids','Science']},
+  {id:7,cat:'heritage',name:'Tipu Sultan\'s Summer Palace',desc:'An ornate 18th-century palace made entirely of teak wood — a masterpiece of Indo-Islamic architecture.',emoji:'🏛️',rating:4.4,visits:'400K+/year',entry:'₹15',timing:'8AM–5:30PM',area:'Krishnarajapura',tags:['History','Architecture','UNESCO']},
+  {id:8,cat:'lake',name:'Hebbal Lake',desc:'A beautiful lake with migratory birds and a serene park, perfect for bird watching.',emoji:'🦅',rating:4.2,visits:'150K+/year',entry:'Free',timing:'6AM–7PM',area:'Hebbal',tags:['Bird Watching','Nature','Peaceful']},
+  {id:9,cat:'mall',name:'Phoenix Marketcity',desc:'Whitefield\'s mega mall with 250+ stores, a multiplex, food court and entertainment zone.',emoji:'🎡',rating:4.5,visits:'6M+/year',entry:'Free',timing:'11AM–11PM',area:'Whitefield',tags:['Family','Entertainment','Shopping']},
+];
+
+const foods = [
+  {name:'Vidyarthi Bhavan',type:'Traditional Udupi',desc:'Since 1943 — legendary crispy masala dosas that Bangaloreans have sworn by for generations.',emoji:'🥞',price:'₹50–150',rating:4.9,area:'Gandhi Bazaar',specialty:'Masala Dosa'},
+  {name:'MTR (Mavalli Tiffin Rooms)',type:'South Indian',desc:'Iconic 1924 restaurant with the most authentic Rava Idli in all of Bangalore.',emoji:'🍽️',price:'₹80–200',rating:4.8,area:'Lalbagh Road',specialty:'Rava Idli, Filter Coffee'},
+  {name:'Empire Restaurant',type:'North Karnataka / Biryani',desc:'The ultimate Bangalore biryani experience — open late, always packed, forever legendary.',emoji:'🍖',price:'₹150–400',rating:4.7,area:'Church Street & more',specialty:'Chicken Biryani'},
+  {name:'Truffles',type:'Continental / Burgers',desc:'Bangalore\'s favourite burger joint where the queues are long but always worth it.',emoji:'🍔',price:'₹200–500',rating:4.6,area:'Koramangala',specialty:'Signature Burgers'},
+  {name:'Brahmin\'s Coffee Bar',type:'Traditional Breakfast',desc:'A tiny legendary spot for kesari bath and filter coffee — open only till 11AM.',emoji:'☕',price:'₹30–80',rating:4.8,area:'Basavanagudi',specialty:'Kesari Bath & Coffee'},
+  {name:'The Fatty Bao',type:'Asian Fusion',desc:'Pan-Asian small plates in a stylish setting — the bao buns and ramen are unmissable.',emoji:'🍜',price:'₹500–1200',rating:4.5,area:'Indiranagar',specialty:'Bao Buns & Ramen'},
+];
+
+const transports = [
+  {emoji:'🚇',name:'Namma Metro',desc:'The fastest way to beat Bangalore traffic. Two lines cover major corridors.',tips:['Purple Line: Baiyyappanahalli ↔ Mysore Rd','Green Line: Nagasandra ↔ Silk Board','Token: ₹10–60 | Day pass: ₹120','Download Namma Metro app for live times']},
+  {emoji:'🚌',name:'BMTC Buses',desc:'Largest city bus network covering every corner of Bangalore at affordable fares.',tips:['Volvo AC buses on major corridors','Smart Card saves 10% on fares','Route finder at bmtcinfo.com','Night buses run 11PM–4AM']},
+  {emoji:'🛺',name:'Auto Rickshaws',desc:'The quintessential Bangalore experience — always negotiate or insist on meter.',tips:['Ola/Uber autos are best for fair pricing','Minimum fare ₹30, ₹15/km after 2km','Night surcharge 25% after 10PM','Always confirm fare before boarding']},
+  {emoji:'✈️',name:'Airport Travel',desc:'Kempegowda International Airport is 30km north. Plan at least 60–90 mins travel time.',tips:['BMTC Vayu Vajra AC buses from key points','Uber/Ola: ~₹600–900 from city','Metro extension opens 2024/25','Pre-book cabs to avoid surge pricing']},
+  {emoji:'🚗',name:'Cab Services',desc:'Ola, Uber, and Rapido Bike taxis are widely available across Bangalore.',tips:['Rapido bikes best for short hops','Ola auto often cheapest option','Surge pricing during peak hours 8–10AM','BluSmart for EV cab experience']},
+  {emoji:'🚲',name:'Yulu Bikes',desc:'Dockless electric bicycles and scooters for eco-friendly last-mile connectivity.',tips:['Available near metro stations','₹5 for 30 minutes (cycles)','Best for 1–5km trips','Helmet available on some e-scooters']},
+];
+
+const areas = [
+  {name:'Indiranagar',gradient:'linear-gradient(135deg,#FF6B35,#F7C948)',vibe:'Trendy & Upscale',rent:'₹25K–60K/mo',lifestyle:'Vibrant café culture, upscale restaurants, boutique stores',cafes:'Matteo, Third Wave Coffee, Toit Brewpub',safety:'🟢 Very Safe',desc:'The hippest neighbourhood with the best pub scene and street food.'},
+  {name:'Koramangala',gradient:'linear-gradient(135deg,#4ECDC4,#0F3460)',vibe:'Startup Capital',rent:'₹20K–55K/mo',lifestyle:'Startup hub, young crowd, excellent food scene',cafes:'Starbucks, Dialogues, Blue Tokai',safety:'🟢 Very Safe',desc:'Where entrepreneurs, engineers and foodies all converge.'},
+  {name:'Whitefield',gradient:'linear-gradient(135deg,#6C63FF,#3F3D56)',vibe:'IT Hub',rent:'₹15K–40K/mo',lifestyle:'Corporate parks, modern malls, international schools',cafes:'Third Wave, Coffee Day, Starbucks',safety:'🟢 Safe',desc:'The tech township — home to major IT parks and expat community.'},
+  {name:'Jayanagar',gradient:'linear-gradient(135deg,#56AB2F,#A8E063)',vibe:'Traditional & Calm',rent:'₹12K–30K/mo',lifestyle:'Old Bangalore charm, peaceful residential, great South Indian food',cafes:'Brahmin\'s, Shree Sagar, local darshinis',safety:'🟢 Very Safe',desc:'The heart of traditional Bangalore with tree-lined avenues.'},
+  {name:'Electronic City',gradient:'linear-gradient(135deg,#1A1A2E,#16213E)',vibe:'IT Suburb',rent:'₹8K–22K/mo',lifestyle:'Budget-friendly, great for IT professionals, improving infrastructure',cafes:'Various local options, improving rapidly',safety:'🟡 Moderate',desc:'The affordable tech suburb along the Hosur Road corridor.'},
+  {name:'MG Road / Brigade Road',gradient:'linear-gradient(135deg,#c0392b,#e74c3c)',vibe:'Commercial Heart',rent:'₹35K–80K/mo',lifestyle:'Central business district, premium offices, nightlife',cafes:'Hard Rock Cafe, The Irish House',safety:'🟢 Safe',desc:'The iconic commercial spine of old Bangalore.'},
+];
+
+const events = [
+  {name:'Bangalore Tech Summit 2026',date:'Every Nov',desc:'Asia\'s largest tech event drawing global leaders and 50,000+ attendees.',location:'BIEC, Tumkur Road',badge:'badge-tech',type:'Tech'},
+  {name:'Karaga Festival',date:'March–April',desc:'Ancient Hindu festival unique to Bangalore — a spectacular procession through the old city.',location:'Dharmaraya Swamy Temple',badge:'badge-culture',type:'Culture'},
+  {name:'Lalbagh Flower Show',date:'Jan & Aug',desc:'Biannual spectacular at the Glass House attracting horticultural exhibits from across India.',location:'Lalbagh Botanical Garden',badge:'badge-culture',type:'Culture'},
+  {name:'Weekend Night Markets',date:'Every Weekend',desc:'Curated pop-up markets with local designers, street food, live music and more.',location:'Indiranagar, Koramangala',badge:'badge-night',type:'Nightlife'},
+  {name:'Bangalore Open Mic Circuit',date:'Weekly',desc:'Stand-up comedy and music open mics at cafes across the city — free or minimal entry.',location:'Various Venues',badge:'badge-night',type:'Nightlife'},
+  {name:'Cyclothon Bangalore',date:'Feb & Oct',desc:'Mass cycling events drawing thousands of cyclists from beginners to pros.',location:'MG Road & Brigade Road',badge:'badge-sport',type:'Sport'},
+  {name:'Namma Food Festival',date:'December',desc:'A grand celebration of Karnataka and pan-Indian cuisine over 3 days.',location:'Palace Grounds',badge:'badge-food',type:'Food'},
+  {name:'Startup Weekend Bangalore',date:'Monthly',desc:'54-hour innovation sprint where teams build and pitch startups to real investors.',location:'Various Tech Parks',badge:'badge-tech',type:'Tech'},
+];
+
+const growthPlans = [
+  {num:'01',title:'SEO & Content Strategy',steps:['Target "things to do in Bangalore 2026" keywords','Create 50+ location-specific landing pages','Write weekly neighbourhood guides & listicles','Optimise for Google Maps rankings','Target "best [food/place] near me" searches']},
+  {num:'02',title:'Social Media Growth',steps:['Post daily Bangalore reels on Instagram','Create a "Hidden Gems" YouTube series','Pinterest boards for each neighbourhood','Engage in Bangalore Reddit community','Partner with local micro-influencers (5K–50K)']},
+  {num:'03',title:'Community & Word of Mouth',steps:['Launch referral rewards for user reviews','WhatsApp groups for each locality','Monthly offline meetups for early users','Press releases to Deccan Herald & TOI Bangalore','Partner with housing societies & PGs']},
+  {num:'04',title:'Monetisation Plan',steps:['₹500–2000/mo for premium business listings','Google AdSense display ads (sidebar & footer)','Affiliate links for hotels & restaurant bookings','Sponsored area guides from real-estate portals','Email newsletter sponsorships at 10K subscribers']},
+];
+
+let reviews = [
+  {name:'Priya S',initial:'P',stars:5,text:'Best guide for Bangalore newcomers! Found Brahmin\'s Coffee Bar through this site. Pure gold.'},
+  {name:'Rahul M',initial:'R',stars:5,text:'The area guide for Koramangala is spot on. Helped me decide where to rent an apartment!'},
+  {name:'Ananya K',initial:'A',stars:4,text:'Love the metro information. Finally a clean guide that explains Namma Metro routes clearly.'},
+];
+
+// ── RENDER PLACES ──
+function renderPlaces(filter='all'){
+  const grid = document.getElementById('placesGrid');
+  const filtered = filter==='all'?places:places.filter(p=>p.cat===filter);
+  grid.innerHTML = filtered.map(p=>`
+    <div class="place-card fade-in" onclick="openModal('place',${p.id})">
+      <div class="place-img-placeholder">${p.emoji}</div>
+      <div class="place-body">
+        <div class="place-cat">${p.cat.toUpperCase()}</div>
+        <div class="place-name">${p.name}</div>
+        <div class="place-desc">${p.desc}</div>
+        <div class="place-meta">
+          <span class="stars">★</span> ${p.rating}
+          <span>· ${p.visits}</span>
+          ${p.tags.slice(0,1).map(t=>`<span class="place-tag-pill">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+  observeFadeIns();
+}
+
+function filterPlaces(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPlaces(cat);
+}
+
+// ── RENDER FOOD ──
+function renderFood(){
+  document.getElementById('foodGrid').innerHTML = foods.map(f=>`
+    <div class="food-card fade-in" onclick="openFoodModal(${foods.indexOf(f)})">
+      <div class="food-img-placeholder">${f.emoji}</div>
+      <div class="food-body">
+        <div class="food-type">${f.type}</div>
+        <div class="food-name">${f.name}</div>
+        <div class="food-desc">${f.desc}</div>
+        <div class="food-footer">
+          <span class="price-range">${f.price}</span>
+          <span class="rating-badge">★ ${f.rating}</span>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ── RENDER TRANSPORT ──
+function renderTransport(){
+  document.getElementById('transportGrid').innerHTML = transports.map(t=>`
+    <div class="transport-card fade-in">
+      <div class="t-icon">${t.emoji}</div>
+      <div class="t-name">${t.name}</div>
+      <div class="t-desc">${t.desc}</div>
+      <ul class="t-tips">${t.tips.map(tip=>`<li>${tip}</li>`).join('')}</ul>
+    </div>`).join('');
+}
+
+// ── RENDER AREAS ──
+function renderAreas(){
+  document.getElementById('areasGrid').innerHTML = areas.map(a=>`
+    <div class="area-card fade-in" onclick="openAreaModal('${a.name}')">
+      <div class="area-header">
+        <div class="area-bg" style="background:${a.gradient}"></div>
+        <div class="area-name">${a.name}</div>
+      </div>
+      <div class="area-body">
+        <div class="area-pills">
+          <span class="pill">${a.vibe}</span>
+          <span class="pill">${a.rent}</span>
+        </div>
+        <div class="area-info">
+          <div class="info-item"><label>Lifestyle</label><span style="font-size:0.8rem">${a.lifestyle.split(',')[0]}</span></div>
+          <div class="info-item"><label>Safety</label><span>${a.safety}</span></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ── RENDER EVENTS ──
+function renderEvents(){
+  document.getElementById('eventsGrid').innerHTML = events.map(e=>`
+    <div class="event-card fade-in">
+      <div class="event-date">${e.date} · 📍 ${e.location}</div>
+      <div class="event-name">${e.name}</div>
+      <div class="event-desc">${e.desc}</div>
+      <div class="event-meta">
+        <span>🎯 ${e.type}</span>
+        <span class="event-badge ${e.badge}">${e.type}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ── RENDER GROWTH ──
+function renderGrowth(){
+  document.getElementById('growthGrid').innerHTML = growthPlans.map(g=>`
+    <div class="growth-card fade-in">
+      <div class="growth-num">${g.num}</div>
+      <div class="growth-title">${g.title}</div>
+      <ul class="growth-steps">${g.steps.map((s,i)=>`
+        <li><span class="step-num">${i+1}</span>${s}</li>`).join('')}
+      </ul>
+    </div>`).join('');
+}
+
+// ── RENDER REVIEWS ──
+function renderReviews(){
+  document.getElementById('reviewsList').innerHTML = reviews.slice(0,3).map(r=>`
+    <div class="review-item">
+      <div class="reviewer">
+        <div class="avatar">${r.initial}</div>
+        <div>
+          <div class="rev-name">${r.name}</div>
+          <div class="rev-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+        </div>
+      </div>
+      <div class="rev-text">${r.text}</div>
+    </div>`).join('');
+}
+
+// ── MODALS ──
+function openModal(type, id){
+  const p = places.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-img-placeholder">${p.emoji}</div>
+    <h2>${p.name}</h2>
+    <div class="meta">
+      <span>★ ${p.rating}</span>
+      <span>📍 ${p.area}</span>
+      <span>👥 ${p.visits}</span>
+    </div>
+    <p class="desc">${p.desc} A must-visit spot that showcases the diverse beauty and history of Bangalore.</p>
+    <div class="info-grid">
+      <div class="info-row"><label>Entry Fee</label><span>${p.entry}</span></div>
+      <div class="info-row"><label>Timings</label><span>${p.timing}</span></div>
+      <div class="info-row"><label>Category</label><span>${p.cat.charAt(0).toUpperCase()+p.cat.slice(1)}</span></div>
+      <div class="info-row"><label>Tags</label><span>${p.tags.join(', ')}</span></div>
+    </div>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+function openFoodModal(idx){
+  const f = foods[idx];
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-img-placeholder">${f.emoji}</div>
+    <h2>${f.name}</h2>
+    <div class="meta"><span>★ ${f.rating}</span><span>📍 ${f.area}</span><span>${f.price}</span></div>
+    <p class="desc">${f.desc}</p>
+    <div class="info-grid">
+      <div class="info-row"><label>Cuisine Type</label><span>${f.type}</span></div>
+      <div class="info-row"><label>Price Range</label><span>${f.price}</span></div>
+      <div class="info-row"><label>Must Try</label><span>${f.specialty}</span></div>
+      <div class="info-row"><label>Rating</label><span>★ ${f.rating}/5</span></div>
+    </div>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+function openAreaModal(name){
+  const a = areas.find(x=>x.name===name);
+  if(!a) return;
+  document.getElementById('modalBody').innerHTML = `
+    <div style="height:120px;border-radius:16px;background:${a.gradient};display:flex;align-items:center;padding:24px;margin-bottom:20px">
+      <h2 style="color:#fff;font-family:'Playfair Display',serif;font-size:2rem;margin:0">${a.name}</h2>
+    </div>
+    <p class="desc">${a.desc}</p>
+    <div class="info-grid">
+      <div class="info-row"><label>Vibe</label><span>${a.vibe}</span></div>
+      <div class="info-row"><label>Avg Rent</label><span>${a.rent}</span></div>
+      <div class="info-row"><label>Best Cafes</label><span style="font-size:0.82rem">${a.cafes}</span></div>
+      <div class="info-row"><label>Safety</label><span>${a.safety}</span></div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--muted);margin-top:16px;line-height:1.7"><strong>Lifestyle:</strong> ${a.lifestyle}</p>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e){
+  if(!e||e.target===document.getElementById('modal'))
+    document.getElementById('modal').classList.remove('open');
+}
+
+// ── AI SEARCH ──
+const aiResponses = {
+  'park':['Bangalore has stunning parks! Lalbagh Botanical Garden (240 acres, ₹20 entry) and Cubbon Park (300 acres, free) are must-visits. Smaller gems include Sankey Tank, Bannerghatta Biological Park and Ulsoor Lake park area.','Best time: Early morning 6–8AM for peaceful walks and perfect photography light.'],
+  'metro':['Namma Metro has 2 lines: Purple Line (Baiyyappanahalli ↔ Mysore Road) and Green Line (Nagasandra ↔ Silk Board). Tokens cost ₹10–60. A Smart Card saves 10% and is the most convenient option. The app shows real-time info!','Pro tip: Avoid metro between 8:30–10AM and 5:30–8PM on weekdays — it gets very crowded.'],
+  'food':['Bangalore is a foodie\'s paradise! For authentic South Indian, Vidyarthi Bhavan (1943) and MTR are iconic. For biryani Empire is legendary. For modern dining, try Indiranagar or Koramangala where new restaurants open every week!','Budget tip: A full South Indian thali at any darshini (small local restaurant) costs just ₹50–80.'],
+  'koramangala':['Koramangala is Bangalore\'s startup heartland! Amazing food scene with Truffles (burgers), Meghana Foods (biryani), and dozens of cafés. Rent is ₹20K–55K/month. Very safe, walkable in some pockets, and always buzzing with energy.','Best for: Young professionals, startup folks, food explorers. The 5th Block and 7th Block areas are most popular.'],
+  'cafe':['Top cafes for work in Bangalore: Third Wave Coffee (multiple locations), Matteo Coffea (Indiranagar), Blue Tokai Coffee, Dialogues Cafe (Koramangala), and Dyu Art Café for a more artsy vibe.','Most have strong WiFi, power sockets, and a relaxed WFH-friendly policy. Get there before 10AM for the best seats!'],
+  'weekend':['Weekend getaways within 100km: Nandi Hills (60km, sunrise drive), Coorg (250km, coffee estates), Mysuru (140km, Palace + food), Chikmagalur (240km, trekking), and Shivanasamudra waterfalls (130km).','Pro tip: Leave Bangalore by 5AM on weekends to beat traffic on the ring roads and highways.'],
+  'default':['Great question about Bangalore! The city has so much to offer — from its booming tech scene and vibrant café culture to heritage parks, world-class food, and a fantastic arts scene.','For best experience: Use Namma Metro to avoid traffic, explore neighbourhoods on foot, and always ask locals for the best hidden gems. Bangaloreans love sharing tips about their city!'],
+};
+
+function getAIResponse(query){
+  const q = query.toLowerCase();
+  if(q.includes('park')||q.includes('garden')||q.includes('lake')) return aiResponses['park'];
+  if(q.includes('metro')||q.includes('transport')||q.includes('travel')) return aiResponses['metro'];
+  if(q.includes('food')||q.includes('restaurant')||q.includes('eat')||q.includes('dosa')||q.includes('biryani')||q.includes('coffee')) return aiResponses['food'];
+  if(q.includes('koramangala')) return aiResponses['koramangala'];
+  if(q.includes('cafe')||q.includes('work')) return aiResponses['cafe'];
+  if(q.includes('weekend')||q.includes('trip')||q.includes('getaway')) return aiResponses['weekend'];
+  return aiResponses['default'];
+}
+
+function setQuery(q){
+  document.getElementById('aiQuery').value=q;
+  askAI();
+}
+
+async function askAI(){
+  const q = document.getElementById('aiQuery').value.trim();
+  if(!q) return;
+  const res = document.getElementById('aiResult');
+  res.className='ai-result show';
+  res.innerHTML='<span class="ai-thinking">🤖 Thinking about your question...</span>';
+  
+  await new Promise(r=>setTimeout(r,900));
+  
+  const [main, tip] = getAIResponse(q);
+  res.innerHTML=`<strong style="color:var(--gold)">🤖 Namma AI says:</strong><br><br>${main}<br><br><span style="color:rgba(255,255,255,0.5);font-size:0.85rem">💡 ${tip}</span>`;
+}
+
+// ── REVIEW SUBMIT ──
+function submitReview(){
+  const name = document.getElementById('userName').value.trim();
+  const review = document.getElementById('reviewText').value.trim();
+  if(!name||!review){showToast('⚠️ Please fill in your name and a review!');return;}
+  reviews.unshift({name,initial:name.charAt(0).toUpperCase(),stars:5,text:review});
+  renderReviews();
+  document.getElementById('userName').value='';
+  document.getElementById('userEmail').value='';
+  document.getElementById('userPass').value='';
+  document.getElementById('reviewText').value='';
+  showToast('🎉 Review submitted! Welcome to Namma Bangalore community!');
+}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.innerHTML=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ── SCROLL ANIMATIONS ──
+function observeFadeIns(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>io.observe(el));
+}
+
+// ── NAV MOBILE ──
+function toggleMenu(){
+  document.getElementById('navlinks').classList.toggle('open');
+}
+
+// ── ACTIVE NAV ON SCROLL ──
+window.addEventListener('scroll',()=>{
+  const sections=['places','food','transport','areas','events'];
+  const links=document.querySelectorAll('.nav-links a');
+  let current='';
+  sections.forEach(s=>{
+    const el=document.getElementById(s);
+    if(el&&window.scrollY>=el.offsetTop-100) current=s;
+  });
+  links.forEach(l=>{
+    l.classList.remove('active');
+    if(l.getAttribute('href')==='#'+current) l.classList.add('active');
+  });
+});
+
+// ── INIT ──
+renderPlaces();
+renderFood();
+renderTransport();
+renderAreas();
+renderEvents();
+renderGrowth();
+renderReviews();
+setTimeout(observeFadeIns,100);
+</script>
+</body>
+</html>
